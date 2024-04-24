@@ -1,0 +1,22 @@
+database ta
+
+tabel users
+name
+nim
+password
+email
+no_tlp
+jurusan
+prodi
+kelas
+alamat
+gambar
+isadmin
+issuperadmin
+
+
+tabel daftar offline
+
+tanggal lahir
+umur
+tanggal konsul
