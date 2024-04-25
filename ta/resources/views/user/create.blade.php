@@ -30,6 +30,17 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <label for="" class="form-label"> Gambar</label>
+                    <img src="" id="img-preview" class="img-preview img-fluid w-30" alt="">
+                    <input type="file" onchange="previewImage()"
+                        class="form-control @error('gambar') is-invalid @enderror" accept="user-images/*" name="gambar"
+                        id="gambar" placeholder="" aria-describedby="fileHelpId">
+                    <div id="fileHelpId" class="form-text text-danger">Format jpg,jpeg,png</div>
+                    <div class="invalid-feedback">
+                        {{ $errors->has('gambar') ? $errors->first('gambar') : '' }}
+                    </div>
+                </div>
 
                 <div class="mb-1">
                     <label for="isadmin" class="form-label">Isadmin</label>
@@ -65,7 +76,7 @@
         })()
     </script>
     <script>
-       
+
         function previewImage() {
             const image = document.getElementById('gambar');
             const imgPreview = document.getElementById('img-preview');

@@ -10,7 +10,7 @@
             <button type="submit" class="btn btn-outline-secondary">
                 <i class="fa fa-search"></i> Search
             </button>
-            
+
             @if(request('search'))
                 <button type="button" class="btn btn-link text-danger" onclick="window.location='{{ route('user.manage') }}'">
                     <i class="fa fa-times"></i>

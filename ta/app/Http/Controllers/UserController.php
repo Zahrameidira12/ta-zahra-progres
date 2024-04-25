@@ -52,13 +52,22 @@ public function store(Request $request)
         'nim' => 'required|unique:users|max:255',
         'password' => 'required|min:6',
         'isadmin' => 'required',
+        'gambar' => 'required|image|mimes:jpg,jpeg,png|max:1024',
     ]);
 
 
+
+    if ($request->hasFile('gambar')) {
+        $image = $request->file('gambar');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('user-images'), $imageName);
+        $validatedData['gambar'] = $imageName;
+    }
+    
     $validated['isadmin'] = $request->input('isadmin', 0);
     $validated['password'] = bcrypt($validated['password']);
 
-  
+
     User::create($validated);
 
     return redirect('/user')->with('status', 'Admin berhasil dibuat');
